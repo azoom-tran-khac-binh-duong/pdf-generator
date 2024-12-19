@@ -1,5 +1,11 @@
 # PDF generator
 
+![PDF Generator](public/pdf-generator.gif)
+
+## Features
+- Generate PDF from a web page
+- Download or open the generated PDF
+
 ## Setup
 
 Make sure to install dependencies:

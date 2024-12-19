@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "nuxt": "^3.14.1592",
+    "puppeteer": "^23.11.0",
     "vue": "latest",
     "vue-router": "latest"
   }
