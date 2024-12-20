@@ -1,3 +1,4 @@
+import { H3Event } from "h3";
 import puppeteer from "puppeteer";
 
 export default defineEventHandler(async (event) => {
@@ -9,6 +10,7 @@ export default defineEventHandler(async (event) => {
 });
 
 async function usePuppeteer() {
+  const currentEvent = useEvent()
   const nitroApp = useNitroApp()
   
   const browser = await puppeteer.launch()
@@ -16,6 +18,11 @@ async function usePuppeteer() {
 
   nitroApp.hooks.hook('close', async () => {
     browser.close()
+  })
+
+  nitroApp.hooks.hookOnce('afterResponse', async (event: H3Event) => {
+    if (currentEvent !== event) return;
+    await page.close()
   })
 
   return {
